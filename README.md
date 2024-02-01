@@ -241,3 +241,101 @@
 
 107) What are the various stages of a pod that you've seen ?
 
+108) What all could be the reasons for pod been staying in pending state ?
+
+109) How can we increase the persistent volume that was assigned to a specific deployment ?
+
+110) How do list the available API Versions in K8's ?
+
+111) What is Kubelet and what's teh use of it ? And why each and every node needs to have a kubelet ?
+
+112) How to scale the pods from 3 to 8 of a deployment ?
+
+113) What is ROLE vs Cluster Role in Kubernetes ?
+
+114) What are static pods in a kubernertes cluster and why we would be needing that ?
+
+115) How can we dry-run a pod ?
+
+116) How your Kubernetes deployments can pull the container images from ECR or GCR ? How authentication between EKS to ECR happen ?
+
+117) How to do maintenance activity on the K8 node ?
+
+118) How can you evict the resources running on a specific kubernetes node before you start maintenance on it ?
+
+```
+    $    kubectl drain <node_name> –ignore-daemonsets
+
+```
+
+119) How can we mark the node not to accept or schedule workloads on it ?
+
+```
+    $      kubectl cordon <node_name>
+```
+
+120) What is cordoning a node and how to do that ?
+
+121) What are the various things that can be done to increase security in Kubernetes ?
+
+```
+    a. Usage of RBAC (Role-Based Access Control)
+    b. Pod Security Policies
+    c. Ensure Network Policies are in place 
+    d. Implement Pod Security Context
+    e. Secure Secrets Management
+```
+
+
+122) What is KubeProxy and KubeDNS in Kubernetes and what's the role of it ?
+
+123) What is a Federated Cluster ?
+```
+    Multiple Kubernetes clusters can be managed as a single cluster with the help of federated clusters. So, you can create multiple Kubernetes clusters within a data center/cloud and use federation to control/manage them all at one place.
+```
+
+
+
+124) List some of the types of Kubernetes volumes.
+
+```
+    EmptyDir: This volume is first created when a node is assigned with a pod. Initially, it is empty. A volume of type emptyDir is available for the lifetime of the pod.
+
+    Flocker: It is an open-source and clustered container data volume manager.
+
+    HostPath: This volume mounts a file or directory from the host node's filesystem into the pod. It can provide access to host files or share files between containers on the same host.
+
+    NFS: Network File System (NFS) allows computers to either access or share files over the network. It is a dedicated file storage when multiple users must retrieve data for centralized disk capacity.
+```
+
+125) How to safely drain a node when you wish to start maintenance on it ?
+
+126) How to schedule pods on a node that's tainted ?
+
+127) What is a Shell-Less Pod ?
+
+128) How can we prevent running the containers of a pod as a root user ?
+
+129) What is a sidecar and when is it best to use one?
+
+130) How do you implement service discovery internally in a Kubernetes cluster?
+
+131) What is the different between a pod and job in kubernetes and why the status of a Job shows as completed ?
+
+132) If a pod exceeds its memory "limit" what signal is sent to the process?
+
+133) What is Port-forwarding and what's the use of it in Kubernetes ?
+
+134) What are the different types of multiple-container pods?
+
+```
+There are three different types of multi-container pods. They are as follows:
+
+    Sidecar: The Sidecar pattern is a single node pattern made of two containers of the application. It contains the core logic of the application and it sends the logic files to the bucket.
+
+    Adapter: It is used to standardize and normalize the output application or monitor data for aggregation. It performs restructuring, and reformatting and can write the correct formatted output for the application.
+
+    Ambassador: It is a proxy pattern that allows connecting other containers with a port on the localhost.
+
+```
+
