@@ -339,3 +339,91 @@ There are three different types of multi-container pods. They are as follows:
 
 ```
 
+135) What is North-South, East-West Communicaiton In Kubernetes ?
+
+136) What's the easiest way to enable TLS between 2 services in K8's ?
+
+137) Is it recommended to enable TLS between the services in Kubernetes ?
+
+138) What is Garbage Collection in Kubernetes and what's the purpose of it ?
+
+```
+Garbage collection is a collective term for the various mechanisms Kubernetes uses to clean up cluster resources. This allows the clean up of resources like the following:
+
+    a. Terminated pods
+    b. Completed Jobs
+    c. Objects without owner references
+    d. Unused containers and container images
+    e. Dynamically provisioned PersistentVolumes with a StorageClass reclaim policy of Delete
+    f. Stale or expired CertificateSigningRequests (CSRs)
+    g. Nodes deleted in the following scenarios:
+    h. On a cloud when the cluster uses a cloud controller manager
+    i. On-premises when the cluster uses an addon similar to a cloud controller manager
+```
+
+
+
+139) What is Pod Disruption
+
+```
+    Pod disruption is the process by which Pods on Nodes are terminated either voluntarily or involuntarily.
+
+    Voluntary disruptions are started intentionally by application owners or cluster administrators. Involuntary disruptions are unintentional and can be triggered by unavoidable issues like Nodes running out of resources, or by accidental deletions.
+
+    And it could be of any of the below reasons :
+
+        * Pod Priority and Preemption
+        * Node-pressure Eviction
+        * API-initiated Eviction
+
+```
+
+140 ) What is Node Pressure Eviction vs API-Initiated Eviction ?
+
+```
+    Node-pressure eviction is the process by which the kubelet proactively terminates pods to reclaim resources on nodes.
+
+    The kubelet monitors resources like memory, disk space, and filesystem inodes on your cluster's nodes. When one or more of these resources reach specific consumption levels, the kubelet can proactively fail one or more pods on the node to reclaim resources and prevent starvation.
+
+    During a node-pressure eviction, the kubelet sets the phase for the selected pods to Failed, and terminates the Pod.
+
+    Node-pressure eviction is not the same as API-initiated eviction.
+
+    The kubelet does not respect your configured PodDisruptionBudget or the pod's terminationGracePeriodSeconds. If you use soft eviction thresholds, the kubelet respects your configured eviction-max-pod-grace-period. If you use hard eviction thresholds, the kubelet uses a 0s grace period (immediate shutdown) for termination.
+
+
+```
+
+141) What is API-initiated Eviction ? 
+
+```
+
+    API-initiated eviction is the process by which you use the Eviction API to create an Eviction object that triggers graceful pod termination.
+
+    You can request eviction by calling the Eviction API directly, or programmatically using a client of the API server, like the kubectl drain command. This creates an Eviction object, which causes the API server to terminate the Pod.
+
+    API-initiated evictions respect your configured PodDisruptionBudgets and terminationGracePeriodSeconds.
+
+    Using the API to create an Eviction object for a Pod is like performing a policy-controlled DELETE operation on the Pod.
+
+```
+
+142) What is a Cron Job In Kuberetes ?
+
+```
+    CronJob is meant for performing regular scheduled actions such as backups, report generation, and so on. One CronJob object is like one line of a crontab (cron table) file on a Unix system. It runs a Job periodically on a given schedule, written in Cron format.
+```
+
+
+143) What is a Pod Overhead ?
+
+```
+    FEATURE STATE: Kubernetes v1.24 [stable]
+    
+        When you run a Pod on a Node, the Pod itself takes an amount of system resources. These resources are additional to the resources needed to run the container(s) inside the Pod. In Kubernetes, Pod Overhead is a way to account for the resources consumed by the Pod infrastructure on top of the container requests & limits.
+
+    In Kubernetes, the Pod's overhead is set at admission time according to the overhead associated with the Pod's RuntimeClass.
+
+    A pod's overhead is considered in addition to the sum of container resource requests when scheduling a Pod. Similarly, the kubelet will include the Pod overhead when sizing the Pod cgroup, and when carrying out Pod eviction ranking.
+
+```
